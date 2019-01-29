@@ -3,11 +3,9 @@
 namespace tincap\Bot\Request;
 
 
-use App\Console\Helpers\ConsoleHelpers;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
 use tincap\Bot\Bot;
-use tincap\Xpartners\Xpartners;
 
 class Request
 {
@@ -48,7 +46,7 @@ class Request
         $this->_bot = $bot;
         $this->_method = $method;
         $this->_uri = trim($uri, '/');
-        $this->_host = rtrim($this->_bot->config['host'], '/');
+        $this->_host = rtrim($this->_bot::getHost(), '/');
         $this->_posts = $posts;
         $this->_params = $params;
 
@@ -59,7 +57,7 @@ class Request
      * Подгатавливаем client
      */
     public function prepareRequest() {
-        foreach (Xpartners::getMandatoryHeaders() as $key => $value) {
+        foreach (Bot::getMandatoryHeaders() as $key => $value) {
             $this->setHeader($key, $value);
         }
 

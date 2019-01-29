@@ -7,7 +7,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\FileCookieJar;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use tincap\Bot\Exceptions\ConfigException;
 use tincap\Bot\Request\Request;
 
 abstract class Bot
@@ -32,14 +31,9 @@ abstract class Bot
     /**
      * Bot constructor
      * @param $config
-     * @throws ConfigException
      */
     public function __construct($config)
     {
-        if (empty($config['host'])) {
-            throw new ConfigException('Missing host config');
-        }
-
         $this->config = $config;
         $this->container = [];
         $history = Middleware::history($this->container);
@@ -61,6 +55,11 @@ abstract class Bot
      * @return array
      */
     abstract public static function getMandatoryHeaders();
+
+    /**
+     * @return string
+     */
+    abstract public static function getHost();
 
     /**
      * @return FileCookieJar
