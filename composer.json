@@ -1,0 +1,21 @@
+{
+    "name": "tincap/bot",
+    "description": "The bot",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "tincap",
+            "email": "tincap@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "tincap\\Bot\\": ""
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "sunra/php-simple-html-dom-parser": "^1.5"
+    }
+}
