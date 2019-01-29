@@ -26,12 +26,15 @@ abstract class Bot
     /** @var array */
     protected $container;
 
+    public $config;
 
     /**
      * Bot constructor
      */
-    public function __construct()
+    public function __construct($config)
     {
+        $this->config = $config;
+        
         $this->container = [];
         $history = Middleware::history($this->container);
         $stack = HandlerStack::create();
