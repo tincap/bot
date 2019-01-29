@@ -57,7 +57,7 @@ class Request
      * Подгатавливаем client
      */
     public function prepareRequest() {
-        foreach (Bot::getMandatoryHeaders() as $key => $value) {
+        foreach ($this->_bot::getMandatoryHeaders() as $key => $value) {
             $this->setHeader($key, $value);
         }
 
